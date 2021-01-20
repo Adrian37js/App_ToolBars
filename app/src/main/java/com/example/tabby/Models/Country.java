@@ -31,7 +31,7 @@ public class Country {
 
 
     public String getFlagURL() {
-        return MessageFormat.format("http://www.geognos.com/api/en/countries/flag/ES.png",
+        return MessageFormat.format("http://www.geognos.com/api/en/countries/flag/"+CountryCode+".png",
                 this.getCountryCode());
     }
 

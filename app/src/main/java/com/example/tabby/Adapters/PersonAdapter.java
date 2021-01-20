@@ -64,7 +64,28 @@ public class PersonAdapter extends BaseAdapter {
         holder.name.setText(currentPerson.getName());
         holder.country.setText(currentPerson.getCountry().getName());
         String url = currentPerson.getCountry().getFlagURL();
-        Picasso.get().load(url).fit().into(holder.image);
+
+        if(currentPerson.getCountry().getCountryCode().equals("AR")){
+            Picasso.get().load(R.drawable.ar).fit().into(holder.image);
+        }else if (currentPerson.getCountry().getCountryCode().equals("ES")){
+            Picasso.get().load(R.drawable.es).fit().into(holder.image);
+        }else if (currentPerson.getCountry().getCountryCode().equals("BO")){
+            Picasso.get().load(R.drawable.bo).fit().into(holder.image);
+        }else if (currentPerson.getCountry().getCountryCode().equals("CL")){
+            Picasso.get().load(R.drawable.cl).fit().into(holder.image);
+        }else if (currentPerson.getCountry().getCountryCode().equals("CO")){
+            Picasso.get().load(R.drawable.co).fit().into(holder.image);
+        }else if (currentPerson.getCountry().getCountryCode().equals("EC")){
+            Picasso.get().load(R.drawable.ec).fit().into(holder.image);
+        }else if (currentPerson.getCountry().getCountryCode().equals("MX")){
+            Picasso.get().load(R.drawable.mx).fit().into(holder.image);
+        }else if (currentPerson.getCountry().getCountryCode().equals("PE")){
+            Picasso.get().load(R.drawable.pe).fit().into(holder.image);
+        }else if (currentPerson.getCountry().getCountryCode().equals("UY")){
+            Picasso.get().load(R.drawable.uy).fit().into(holder.image);
+        }else if (currentPerson.getCountry().getCountryCode().equals("VE")){
+            Picasso.get().load(R.drawable.ve).fit().into(holder.image);
+        }
 
         return convertView;
     }
