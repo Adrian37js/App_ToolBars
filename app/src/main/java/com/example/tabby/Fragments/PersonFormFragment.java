@@ -28,20 +28,17 @@ import java.util.List;
 
 public class PersonFormFragment extends Fragment {
 
-    private EditText editTextName;
+    //DECLARAMOS LAS VARIABLES
     private Spinner spinnerCountry;
     private Button btnCreate;
+    private EditText editTextName;
     private Country country;
     private String code;
-
     private List<Country> countries;
     private OnPersonCreated onPersonCreated;
 
-
     public PersonFormFragment() {
-        // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,19 +51,17 @@ public class PersonFormFragment extends Fragment {
 
         //Cogemos los paises de UTIL
         countries = Util.getCountries();
-
-        //
         spinnerCountry.setAdapter(new ArrayAdapter<Country>(getContext(), android.R.layout.simple_spinner_dropdown_item, countries));
 
         //Lo pasamos al adapter
         ArrayAdapter<Country> adapter = new ArrayAdapter<Country>(getContext(), android.R.layout.simple_spinner_dropdown_item, countries);
         spinnerCountry.setAdapter(adapter);
 
+        //Funcionalidad del boton
         btnCreate.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
-                //Buscamos el Codigo de Pais
+                //Buscamos el Codigo de Pais y si coincide con el clikado lo guardamos en la variable code
                 for(int i=0; countries.size() > i; i++ ){
                     if(spinnerCountry.getSelectedItem().toString().equals(countries.get(i).getName())){
                         code = countries.get(i).getCountryCode();
@@ -75,12 +70,10 @@ public class PersonFormFragment extends Fragment {
                 //Creamnos el pais
                 country = new Country (spinnerCountry.getSelectedItem().toString(), code);
                 Person person = new Person(editTextName.getText().toString(), country);
-                //Persona + Pais
+                //mediante la interfaz creamos el pais y la persona
                 onPersonCreated.createPerson(person);
             }
         });
-
-
         return view;
     }
 
@@ -91,11 +84,10 @@ public class PersonFormFragment extends Fragment {
         if (context instanceof OnPersonCreated)
             onPersonCreated = (OnPersonCreated) context;
         else
-            throw new RuntimeException(context.toString() + " must implement OnPersonCreated");
+            throw new RuntimeException(context.toString() + " debe implementarse OnPersonCreated");
     }
 
     // Eventos para desenlazar el listener
-
     @Override
     public void onDetach() {
         super.onDetach();

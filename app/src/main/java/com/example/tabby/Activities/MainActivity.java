@@ -18,63 +18,56 @@ import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity implements OnPersonCreated {
 
+    public static final int num = 1;
     ViewPager viewPager;
-    public static final int FORM_FRAGMENT = 0;
-    public static final int LIST_FRAGMENT = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Metodo 1
+        //Creamos la barra
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
         setActionBar(myToolbar);
 
-        //Metodo 2
+        //Creamos las secciones de la barra
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Formulario"));
         tabLayout.addTab(tabLayout.newTab().setText("Lista"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        //Metodo 3
+        //Cogemos el id del formulario
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-
-
+        //Mensajes cuando cambiamos de view
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                Toast.makeText(MainActivity.this, "Seleccionado -> " + tab.getText(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Seleccionado -> " + tab.getText(), Toast.LENGTH_SHORT).show();
                 int position = tab.getPosition();
                 viewPager.setCurrentItem(position);
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                Toast.makeText(MainActivity.this, "Deseleccionado -> "+tab.getText(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Deseleccionado -> "+tab.getText(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                Toast.makeText(MainActivity.this, "Reseleccioando -> "+tab.getText(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Reseleccioando -> "+tab.getText(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
+    //Creamos un persona
     @Override
     public void createPerson(Person person) {
-        PersonListFragment fragment = (PersonListFragment) getSupportFragmentManager().getFragments().get(LIST_FRAGMENT);
+        PersonListFragment fragment = (PersonListFragment) getSupportFragmentManager().getFragments().get(num);//cogemos de la lista la persona
         fragment.AddPerson(person);
-        viewPager.setCurrentItem(LIST_FRAGMENT);
+        viewPager.setCurrentItem(num);
     }
 }

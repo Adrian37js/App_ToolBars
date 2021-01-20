@@ -24,7 +24,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:text="Person" />
+                android:textSize="20dp"
+                android:text="Persona:" />
 
 
             <EditText
@@ -32,7 +33,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewName"
-                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+
                 android:inputType="textPersonName" />
 
             <TextView
@@ -41,16 +43,16 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/editTextName"
                 android:layout_marginTop="25dp"
+                android:textSize="20dp"
                 android:paddingLeft="5dp"
-                android:text="Country" />
+                android:text="Pais:" />
 
             <Spinner
                 android:id="@+id/spinnerCiudades"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textViewCountry"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp" />
+                android:textSize="20sp"
+                android:layout_below="@+id/textViewCountry"/>
 
         </RelativeLayout>
 
@@ -59,9 +61,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="#FFF"
-            android:text="Add Person"
-            android:textColor="@android:color/white" />
+            android:background="#009688"
+            android:text="Añadir Persona"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 
