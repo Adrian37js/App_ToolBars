@@ -49,7 +49,7 @@ public class PersonFormFragment extends Fragment {
         View view = inflater.inflate(R.layout.form_activity, container, false);
         //Cogemos los ID de form_activity.xml
         editTextName = (EditText) view.findViewById(R.id.editTextName);
-        spinnerCountry = (Spinner) view.findViewById(R.id.spinner_ciudades);
+        spinnerCountry = (Spinner) view.findViewById(R.id.spinnerCiudades);
         btnCreate = (Button) view.findViewById(R.id.btnCreatePerson);
 
         //Cogemos los paises de UTIL
